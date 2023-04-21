@@ -7,7 +7,7 @@ liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", arg
 =====
 Then you can use <prefix>tag liveleak [image]
   */
-let dbg = ""
+let dbg = "";
 const defaultConfig = {
 	version: 0, // number, 0
 	encodeLevel: undefined, // undefined | number // 1 - 9
@@ -40,7 +40,8 @@ const liveLeakJob = async (cfg) => {
 
 	const args = cfg?.assyst?.args?.split(/ +/g);
 
-	if (args[0] && !args[0].includes("-")) return "Invalid position in first argument.\n" + help.arg1;
+	if (args[0] && !args[0].includes("-"))
+		return "Invalid position in first argument.\n" + help.arg1;
 
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
 		globalThis.ctx.liveLeakCache = {
@@ -73,7 +74,7 @@ const liveLeakJob = async (cfg) => {
 				help.arg1
 			);
 		}
-		
+
 		if (inputpos[1] === "left") position[0] = 1;
 		else if (inputpos[1] === "middle")
 			position[1] = Math.round(inputimg.width / 2 - liveleakimg.width);
@@ -86,7 +87,7 @@ const liveLeakJob = async (cfg) => {
 			);
 		}
 	}
-	dbg = {args, inputpos, position}
+	dbg = { args, inputpos, position };
 
 	const outimg = inputimg;
 	outimg.composite(liveleakimg, position[0], position[1], 0);
