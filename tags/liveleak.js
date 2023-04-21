@@ -1,5 +1,4 @@
-/* press le like, me love number go up
-  Run this command to add this as an Assyst tag on your server
+/* Run this command to add this as an Assyst tag on your server
 =====
 <prefix>tag create liveleak {js: 
 {download: https://github.com/Meqativ/ass-yst-tags/raw/main/tags/liveleak.js }
@@ -32,13 +31,12 @@ const liveLeakJob = async (cfg) => {
 	if (cfg?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/liveleak.js";
 
 	if (cfg?.assyst?.args === "pastebin")
-		return "This tag's on github, do `<prefix>tag <name> raw`";
+		return "This tag is on github, do `<prefix>tag <name> raw`";
 
 
 	const args = cfg?.assyst?.args?.split(/ +/g)
-
-	return args
-
+	
+	const position = args[0].split('-') ?? ["top", "left"]
 
 
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
