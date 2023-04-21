@@ -62,11 +62,11 @@ const liveLeakJob = async (cfg) => {
 	const position = [1, 1];
 
 	if (inputimg.height !== 1 && inputimg.width !== 1) {
-		if (inputpos[0] === "top") position[1] = 1;
+		if (inputpos[0] === "top") position[0] = 1;
 		else if (inputpos[0] === "middle")
-			position[1] = Math.round(inputimg.height / 2 - liveleakimg.width);
+			position[0] = Math.round(inputimg.height / 2 - liveleakimg.width);
 		else if (inputpos[0] === "bottom")
-			position[1] = inputimg.height - liveleakimg.height;
+			position[0] = inputimg.height - liveleakimg.height;
 		else {
 			return (
 				`Invalid vertical in first argument (received: ${inputpos[0]})\n` +
