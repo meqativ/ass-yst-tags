@@ -64,7 +64,7 @@ const liveLeakJob = async (cfg) => {
 	if (inputimg.height !== 1 && inputimg.width !== 1) {
 		if (inputpos[0] === "top") position[0] = 1;
 		else if (inputpos[0] === "middle")
-			position[0] = Math.round(inputimg.height / 2 - liveleakimg.width);
+			position[0] = Math.round(inputimg.height / 2) - liveleakimg.width;
 		else if (inputpos[0] === "bottom")
 			position[0] = inputimg.height - liveleakimg.height;
 		else {
@@ -76,7 +76,7 @@ const liveLeakJob = async (cfg) => {
 
 		if (inputpos[1] === "left") position[0] = 1;
 		else if (inputpos[1] === "middle")
-			position[1] = Math.round(inputimg.width / 2 - liveleakimg.width);
+			position[1] = Math.round(inputimg.width / 2) - liveleakimg.width;
 		else if (inputpos[1] === "right")
 			position[1] = inputimg.width - liveleakimg.width;
 		else {
