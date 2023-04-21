@@ -40,8 +40,7 @@ const liveLeakJob = async (cfg) => {
 
 	const args = cfg?.assyst?.args?.split(/ +/g);
 
-	if (args[0] && !args[0].includes("-")) return;
-	"Invalid position in first argument.\n" + help.arg1;
+	if (args[0] && !args[0].includes("-")) return "Invalid position in first argument.\n" + help.arg1;
 
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
 		globalThis.ctx.liveLeakCache = {
@@ -76,9 +75,9 @@ const liveLeakJob = async (cfg) => {
 		}
 
 		if (inputpos[1] === "left") position[0] = 1;
-		else if (inputpos[0] === "middle")
+		else if (inputpos[1] === "middle")
 			position[1] = Math.round(inputimg.width / 2 - liveleakimg.width);
-		else if (inputpos[0] === "right")
+		else if (inputpos[1] === "right")
 			position[1] = inputImg.widht - liveleakimg.width;
 		else {
 			return (
