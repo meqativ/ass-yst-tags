@@ -89,6 +89,6 @@ const liveLeakJob = async (cfg) => {
 	ctx.dbg = { args, inputpos, position };
 
 	const outimg = inputimg;
-	outimg.composite(liveleakimg, position[0], position[1], 0);
+	outimg.composite(liveleakimg, position[1], position[0], 0);
 	return outimg.encode(cfg?.encodeLevel);
 };
