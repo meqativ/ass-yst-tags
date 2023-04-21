@@ -24,7 +24,7 @@ const liveLeakJob = async (cfg) => {
 	const LIVE_LEAK_IMAGE_URL = "https://cdn.discordapp.com/attachments/824020889234440232/1099053961211822100/attachment.png",
 		BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute";
-
+	
 	if (cfg?.version !== 0)
 		throw new Error(
 			`Version ${cfg.version} isn't available, use one of these: 0`
@@ -34,9 +34,14 @@ const liveLeakJob = async (cfg) => {
 	if (cfg?.assyst?.args === "pastebin")
 		return "This tag's on github, do `<prefix>tag <name> raw`";
 
+
+	const args = cfg?.assyst?.args?.split(/ +/g)
+
+	return args
+
+
+
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
-		return "hi"
-		// hehe
 		globalThis.ctx.liveLeakCache = {
 			images: [await fetch(LIVE_LEAK_IMAGE_URL).then((a) => a.arrayBuffer())],
 		};
