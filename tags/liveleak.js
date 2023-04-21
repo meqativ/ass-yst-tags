@@ -35,6 +35,7 @@ const liveLeakJob = async (cfg) => {
 		return "This tag's on github, do `<prefix>tag <name> raw`";
 
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
+		return "hi"
 		// hehe
 		globalThis.ctx.liveLeakCache = {
 			images: [await fetch(LIVE_LEAK_IMAGE_URL).then((a) => a.arrayBuffer())],
