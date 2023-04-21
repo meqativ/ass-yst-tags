@@ -73,7 +73,7 @@ const liveLeakJob = async (cfg) => {
 				help.arg1
 			);
 		}
-
+		
 		if (inputpos[1] === "left") position[0] = 1;
 		else if (inputpos[1] === "middle")
 			position[1] = Math.round(inputimg.width / 2 - liveleakimg.width);
@@ -86,6 +86,7 @@ const liveLeakJob = async (cfg) => {
 			);
 		}
 	}
+	return {inputpos, position}
 
 	const outimg = inputimg;
 	outimg.composite(liveleakimg, position[0], position[1], 0);
