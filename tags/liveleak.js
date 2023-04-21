@@ -7,7 +7,7 @@ liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", arg
 =====
 Then you can use <prefix>tag liveleak [image]
   */
-const dbg = ""
+let dbg = ""
 const defaultConfig = {
 	version: 0, // number, 0
 	encodeLevel: undefined, // undefined | number // 1 - 9
