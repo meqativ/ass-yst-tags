@@ -18,12 +18,17 @@ const defaultConfig = {
 		lastattachment: "meow", // string // {lastattachment}
 	},
 };
-
+const help = {
+	arg1:
+		"`[vertical: top/middle/bottom]`-`[horisontal: left/middle/right]`\n" +
+		"Examples: top-left; middle-middle; bottom-right; top-right",
+};
 const liveLeakJob = async (cfg) => {
-	const LIVE_LEAK_IMAGE_URL = "https://cdn.discordapp.com/attachments/824020889234440232/1099053961211822100/attachment.png",
+	const LIVE_LEAK_IMAGE_URL =
+			"https://cdn.discordapp.com/attachments/824020889234440232/1099053961211822100/attachment.png",
 		BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute";
-	
+
 	if (cfg?.version !== 0)
 		throw new Error(
 			`Version ${cfg.version} isn't available, use one of these: 0`
@@ -33,11 +38,10 @@ const liveLeakJob = async (cfg) => {
 	if (cfg?.assyst?.args === "pastebin")
 		return "This tag is on github, do `<prefix>tag <name> raw`";
 
+	const args = cfg?.assyst?.args?.split(/ +/g);
 
-	const args = cfg?.assyst?.args?.split(/ +/g)
-	
-	const position = args[0].split('-') ?? ["top", "left"]
-
+	if (args[0] && !args[0].includes("-")) return;
+	"Invalid position in first argument.\n" + help.arg1;
 
 	if (ctx?.flushCache || !globalThis.ctx?.liveLeakCache?.images?.[0]) {
 		globalThis.ctx.liveLeakCache = {
@@ -51,7 +55,40 @@ const liveLeakJob = async (cfg) => {
 	const [liveleakimg, inputimg] = await Promise.all(
 		globalThis.ctx.liveLeakCache.images.map(ImageScript.decode)
 	);
-	const outimg = inputimg
-	outimg.composite(liveleakimg, 0, 0, 0)
+
+	const inputpos = args[0].split("-") ?? ["top", "left"];
+	// top  |  left
+	// middle |  middle
+	// bottom  |  right
+	const position = [1, 1];
+
+	if (inputimg.height !== 1 && inputimg.width !== 1) {
+		if (inputpos[0] === "top") position[1] = 1;
+		else if (inputpos[0] === "middle")
+			position[1] = Math.round(inputimg.height / 2 - liveleakimg.width);
+		else if (inputpos[0] === "bottom")
+			position[1] = inputImg.height - liveleakimg.height;
+		else {
+			return (
+				`Invalid vertical in first argument (received: ${inputpos[0]})\n` +
+				help.arg1
+			);
+		}
+
+		if (inputpos[1] === "left") position[0] = 1;
+		else if (inputpos[0] === "middle")
+			position[1] = Math.round(inputimg.width / 2 - liveleakimg.width);
+		else if (inputpos[0] === "right")
+			position[1] = inputImg.widht - liveleakimg.width;
+		else {
+			return (
+				`Invalid horisontal in first argument (received: ${inputpos[1]})\n` +
+				help.arg1
+			);
+		}
+	}
+
+	const outimg = inputimg;
+	outimg.composite(liveleakimg, position[0], position[1], 0);
 	return outimg.encode(cfg?.encodeLevel);
 };
