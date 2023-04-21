@@ -55,7 +55,7 @@ const liveLeakJob = async (cfg) => {
 		globalThis.ctx.liveLeakCache.images.map(ImageScript.decode)
 	);
 
-	const inputpos = args[0].split("-") ?? ["top", "left"];
+	const inputpos = args[0]?.split("-") || ["top", "left"];
 	// top  |  left
 	// middle |  middle
 	// bottom  |  right
