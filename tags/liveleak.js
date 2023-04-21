@@ -47,6 +47,7 @@ const liveLeakJob = async (cfg) => {
 	const [liveleakimg, inputimg] = await Promise.all(
 		globalThis.ctx.liveLeakCache.images.map(ImageScript.decode)
 	);
-
-	return inputimg.encode(cfg?.encodeLevel);
+	const outimg = inputimg
+	outimg.composite(liveleakimg, 0, 0, 0)
+	return outimg.encode(cfg?.encodeLevel);
 };
