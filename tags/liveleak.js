@@ -86,7 +86,7 @@ const liveLeakJob = async (cfg) => {
 			);
 		}
 	}
-	globalThis.debug = {inputpos, position}
+	globalThis.debug = {args, inputpos, position}
 
 	const outimg = inputimg;
 	outimg.composite(liveleakimg, position[0], position[1], 0);
