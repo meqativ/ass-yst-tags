@@ -2,7 +2,7 @@
   Run this command to add this as an Assyst tag on your server
 =====
 <prefix>tag create liveleak {js: 
-{download: sex }
+{download: https://github.com/Meqativ/ass-yst-tags/raw/main/tags/liveleak.js }
 liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", args: "{replace:"|\"|{args}}"\}\}) 
 }
 =====
@@ -22,7 +22,7 @@ const defaultConfig = {
 
 const liveLeakJob = async (cfg) => {
 	const LIVE_LEAK_IMAGE_URL = "https://github.com/meqativ.png",
-		BASE_REPO_URL = "https://github.com/meqativ/ass-yst-tags/main/tree",
+		BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute";
 
 	if (cfg?.version !== 0)
