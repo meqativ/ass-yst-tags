@@ -7,7 +7,6 @@ liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", arg
 =====
 Then you can use <prefix>tag liveleak [image]
   */
-let dbg = "";
 const defaultConfig = {
 	version: 0, // number, 0
 	encodeLevel: undefined, // undefined | number // 1 - 9
@@ -87,7 +86,7 @@ const liveLeakJob = async (cfg) => {
 			);
 		}
 	}
-	dbg = { args, inputpos, position };
+	ctx.dbg = { args, inputpos, position };
 
 	const outimg = inputimg;
 	outimg.composite(liveleakimg, position[0], position[1], 0);
