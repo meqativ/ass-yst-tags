@@ -21,7 +21,7 @@ const defaultConfig = {
 };
 
 const liveLeakJob = async (cfg) => {
-	const LIVE_LEAK_IMAGE_URL = "https://github.com/meqativ.png",
+	const LIVE_LEAK_IMAGE_URL = "https://cdn.discordapp.com/attachments/824020889234440232/1099053961211822100/attachment.png",
 		BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute";
 
