@@ -12,10 +12,10 @@ const run = (args) =>
 		assyst: { ...defaultConfig.assyst, args },
 	});
 
-const repeatJob = (cfg) => {
+const repeatJob = (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute"
-	if (cfg?.assyst?.args === "raw") return BASE_REPO_URL+"/repeat.js"
+	if (config?.assyst?.args === "raw") return BASE_REPO_URL+"/repeat.js"
 
 	const xml = (text) => "```xml\n" + text + "```";
 	const helpText = (name, end = "") =>
@@ -23,7 +23,7 @@ const repeatJob = (cfg) => {
 		`:questionmark:\`-t repeat [repeat<number>] [?text...<string>]\`` +
 		end;
 
-	if (cfg?.assyst?.args?.length === 0)
+	if (config?.assyst?.args?.length === 0)
 		return helpText(
 			"hewp",
 			"\nIf the tag malfunctions, talk to <@744276454946242723>, or the owner of the tag(<prefix>tag info {name})."
@@ -48,8 +48,8 @@ const repeatJob = (cfg) => {
 	const text = args.join(" ");
 	if (text.length == 0) return String(timesToRepeat).repeat(timesToRepeat);
 	const outputReal = text.repeat(timesToRepeat);
-	if (outputReal.split("\n").length > cfg?.newlineLimit)
-		return helpText(`too many newlines. MAX: ${cfg?.newlineLimit}`);
+	if (outputReal.split("\n").length > config?.newlineLimit)
+		return helpText(`too many newlines. MAX: ${config?.newlineLimit}`);
 
 	return outputReal.trim().length === 0
 		? helpText("empty output")
