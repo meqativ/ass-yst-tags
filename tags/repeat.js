@@ -1,11 +1,3 @@
-// compatibility layer, TODO: don't push to github silly
-const run = (assystArgs) =>
-	repeatJob({
-		...defaultConfig,
-		assyst: { ...defaultConfig?.assyst, args: assystArgs },
-	});
-
-
 const defaultConfig = {
 	version: 0, // number, 0
 	newlineLimit: 20,
@@ -13,6 +5,12 @@ const defaultConfig = {
 		args: "", // string // {replace:"|\"|{args}}
 	},
 };
+
+const run = (args) =>
+	repeatJob({
+		...defaultConfig,
+		assyst: { ...defaultConfig.assyst, args },
+	});
 
 const repeatJob = (cfg) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
