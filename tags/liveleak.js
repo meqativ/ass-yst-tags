@@ -38,6 +38,7 @@ const liveLeakJob = async (cfg) => {
 		return "This tag is on github, do `<prefix>tag <name> raw`";
 
 	const args = cfg?.assyst?.args?.split(" ");
+return args
 
 	if (args[0] && args[0]?.length > 0 && !args[0].includes("-"))
 		return "Invalid position in first argument.\n" + help.arg1;
