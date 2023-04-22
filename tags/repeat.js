@@ -23,12 +23,12 @@ const repeatJob = (config) => {
 		`:questionmark:\`-t repeat [repeat<number>] [?text...<string>]\`` +
 		end;
 
-	if (config?.assyst?.args?.length === 0)
+	if (!config?.assyst?.args?.length)
 		return helpText(
 			"hewp",
 			"\nIf the tag malfunctions, talk to <@744276454946242723>, or the owner of the tag(<prefix>tag info {name})."
 		);
-	const args = rawArgs.split(" ");
+	const args = config.assyst.args.split(" ");
 	const timesToRepeat = parseInt(args.shift());
 	const fnc = ($) =>
 		Number.isNaN($) ? 1 : a === 0 || a < 1 ? 2 : a > 2000 ? 3 : 0;
