@@ -31,7 +31,7 @@ const repeatJob = (config) => {
 	const args = config.assyst.args.split(" ");
 	const timesToRepeat = parseInt(args.shift());
 	const fnc = ($) =>
-		Number.isNaN($) ? 1 : a === 0 || a < 1 ? 2 : a > 2000 ? 3 : 0;
+		Number.isNaN($) ? 1 : $ === 0 || $ < 1 ? 2 : $ > 2000 ? 3 : 0;
 	const shit = fnc(timesToRepeat);
 	if (shit !== 0)
 		return helpText(
