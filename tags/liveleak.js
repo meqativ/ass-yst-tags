@@ -7,6 +7,11 @@ liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", arg
 =====
 Then you can use <prefix>tag liveleak [image]
   */
+const help = {
+	arg1:
+		"`[vertical: top/middle/bottom]`-`[horisontal: left/middle/right]`\n" +
+		"Examples: top-left; middle-middle; bottom-right; top-right",
+};
 const defaultConfig = {
 	version: 0, // number, 0
 	encodeLevel: undefined, // undefined | number // 1 - 9
@@ -16,11 +21,7 @@ const defaultConfig = {
 		args: "", // string // {replace:"|\"|{args}}
 		lastattachment: "meow", // string // {lastattachment}
 	},
-};
-const help = {
-	arg1:
-		"`[vertical: top/middle/bottom]`-`[horisontal: left/middle/right]`\n" +
-		"Examples: top-left; middle-middle; bottom-right; top-right",
+	translationStrings: help,
 };
 const liveLeakJob = async (cfg) => {
 	const LIVE_LEAK_IMAGE_URL =
