@@ -38,13 +38,14 @@ const repeatJob = (config) => {
 	const shit = fnc(timesToRepeat);
 	if (shit !== 0)
 		return helpText(
-			"Invalid number [arg:1] (should be " +
+			"Invalid number [arg:1]"+
+			shit !== 0 ?
+			(" (should be " +
 					shit === 1
 					? "more than 1"
 					: shit === 3
-					? "less than 2000"
-					: "idk, think?") +
-				")"
+					? "less than 2000" : shit +
+				")") : ""
 		);
 	const text = args.join(" ");
 	if (!text) return helpText(`No text [arg:2…]`)
