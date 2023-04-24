@@ -31,14 +31,15 @@ const repeatJob = (config) => {
 	const args = config.assyst.args.split(" ");
 	const timesToRepeat = parseInt(args.shift());
 	const fnc = ($) =>
-		Number.isNaN($) ? 1 : $ === 0 || $ < 1 ? 2 : $ > 2000 ? 3 : 0;
+			$ === 0 || $ < 1
+			? 1 : 
+			$ > 2000 
+			? 2 : 0;
 	const shit = fnc(timesToRepeat);
 	if (shit !== 0)
 		return helpText(
 			"Invalid number [arg:1] (should be " +
-				(shit === 1
-					? "a number"
-					: shit === 2
+					shit === 1
 					? "more than 1"
 					: shit === 3
 					? "less than 2000"
