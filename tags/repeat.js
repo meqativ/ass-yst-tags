@@ -20,13 +20,13 @@ const repeatJob = (config) => {
 	const xml = (text) => "```xml\n" + text + "```";
 	const helpText = (name, end = "") =>
 		xml(`< ${name} >`) +
-		`:questionmark:\`-t repeat [repeat<number>] [?text...<string>]\`` +
+		`<:questionmark:1099298038125695068>\`-t repeat [repeat<number>] [?text...<string>]\`` +
 		end;
 
 	if (!config?.assyst?.args?.length)
 		return helpText(
 			"hewp",
-			"\nIf the tag malfunctions, talk to <@744276454946242723>, or the owner of the tag(<prefix>tag info {name})."
+			"\nIf the tag malfunctions, tell <@744276454946242723>, or the owner of the tag(`<prefix>tag info {name}`)."
 		);
 	const args = config.assyst.args.split(" ");
 	const timesToRepeat = parseInt(args.shift());
@@ -35,7 +35,7 @@ const repeatJob = (config) => {
 	const shit = fnc(timesToRepeat);
 	if (shit !== 0)
 		return helpText(
-			"first argument is invalid (should be " +
+			"Invalid number [arg:1] (should be " +
 				(shit === 1
 					? "a number"
 					: shit === 2
@@ -46,10 +46,11 @@ const repeatJob = (config) => {
 				")"
 		);
 	const text = args.join(" ");
+	if (!text) return helpText(`No text [arg:2…]`)
 	if (text.length == 0) return String(timesToRepeat).repeat(timesToRepeat);
 	const outputReal = text.repeat(timesToRepeat);
 	if (outputReal.split("\n").length > config?.newlineLimit)
-		return helpText(`too many newlines. MAX: ${config?.newlineLimit}`);
+		return helpText(`Too many newlines. [MAX:${config?.newlineLimit}]`);
 
 	return outputReal.trim().length === 0
 		? helpText("empty output")
