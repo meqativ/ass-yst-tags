@@ -1,5 +1,5 @@
 /* Run this command to add this as an Assyst tag on your server
-=====
+=====  6969699
 <prefix>tag create liveleak {js: 
 {download: https://github.com/Meqativ/ass-yst-tags/raw/main/tags/liveleak.js }
 liveLeakJob(\{...defaultConfig, assyst:\{lastattachment: "{lastattachment}", args: "{replace:"|\"|{args}}"\}\}) 
