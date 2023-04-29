@@ -3,7 +3,7 @@
 
 const defaultConfig = {
 	version: 0, // number, 0
-	newlineLimit: 20,
+	inline_links: false,
 	assyst: {
 		args: "", // string // {replace:"|\"|{args}}
 	},
@@ -21,7 +21,7 @@ const urbanJob = async (config) => {
 		end;
 
 	const args = {
-		inline_links: false, // boolean
+		inline_links: config?.inline_links, // boolean
 		word: config?.assyst?.args, // string
 	};
 	if (config?.assyst?.args?.length < 1) return helpText("No sentence provided");
