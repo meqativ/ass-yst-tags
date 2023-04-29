@@ -31,7 +31,8 @@ const urbanJob = async (config) => {
 	const url = `https://api.urbandictionary.com/v0/define?term=${query}`;
 	const response = await fetch(url),
 		data = await response.json();
-	const definition = data.list?.[0];
+	const defObj = data.list?.[0];
+	const definition = defObj?.definition;
 	if (!definition) {
 		return helpText(
 			`No definition found for \`${word.replaceAll("`", "`󠄴")}\`${
