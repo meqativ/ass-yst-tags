@@ -11,6 +11,7 @@ const defaultConfig = {
 
 const urbanJob = async (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
+		HIGHLIGHTS_REGEX,
 		YOU = "cute";
 	if (config?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/urban.js";
 
@@ -42,22 +43,27 @@ const urbanJob = async (config) => {
 	let output = `__Definition for **\`${defObj.word}\`**__`;
 
 	if (!inline_links) {
-		output += `\n${quote(definition)}\n\n` + `Source: <${permalink}>`;
+		output += `\n${quote(smartRemoveSquareBrackets(definition))}\n\n` + `Source: <${permalink}>`;
 	} else {
 		output +=
 			` ([source](${permalink} "Link to the place where the definition was found"))\n` +
 			`${quote(replaceHighlighted(definition))}`;
 	}
 	return output;
-};
 function quote(text) {
 	return `> ${text.replaceAll("\n", "\n> ")}`;
 }
+
+function smartRemoveSquareBrackets(text) {
+	return text.replace(HIGHLIGHTS_REGEX, (_, word) => word.trim());
+}
+
 function replaceHighlighted(text) {
-	return text.replace(/\[(.*?)\]/g, (match, word) => {
+	return text.replace(HIGHLIGHTS_REGEX, (match, word) => {
 		word = word.trim();
 		return `[${word}](<https://www.urbandictionary.com/define.php?term=${encodeURIComponent(
 			word
 		)}> "Definition for “${word}”")`;
 	});
+}
 }
