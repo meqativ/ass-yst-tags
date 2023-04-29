@@ -30,11 +30,12 @@ const urbanJob = async (config) => {
 	const query = encodeURIComponent(args.word);
 	const url = `https://api.urbandictionary.com/v0/define?term=${query}`;
 	const response = await fetch(url),
+		status = response?.status,
 		data = await response.json(),
 		defObj = data.list?.[0];
 	const definition = defObj?.definition;
 	if (!definition) {
-		return helpText(`No definition found for "${word.replaceAll("`", "`󠄴")}"`);
+		return helpText(`No definition found for "${word.replaceAll("`", "`󠄴")}"${(typeof status !== "undefined" && status !== 200) ? `(${status})` : "" }`);
 	}
 
 	const permalink = defObj.permalink;
