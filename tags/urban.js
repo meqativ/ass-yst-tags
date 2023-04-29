@@ -34,6 +34,7 @@ const urbanJob = async (config) => {
 	const defObj = data.list?.[0];
 	const definition = defObj?.definition;
 	if (!definition) {
+		return [response?.status, response?.code, Object.keys(response)]
 		return helpText(
 			`No definition found for \`${word.replaceAll("`", "`󠄴")}\`${
 				response.status !== 200 ? ` (${response.status})` : ""
