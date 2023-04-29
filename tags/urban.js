@@ -11,7 +11,7 @@ const defaultConfig = {
 	},
 };
 
-const urbanJob = (config) => {
+const urbanJob = async (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute"
 	if (config?.assyst?.args === "raw") return BASE_REPO_URL+"/urban.js"
