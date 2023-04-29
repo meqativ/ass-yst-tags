@@ -15,7 +15,7 @@ const run = (args) =>
 const repeatJob = (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute"
-	if (config?.assyst?.args === "raw") return BASE_REPO_URL+"/repeat.js"
+	if (config?.assyst?.args === "raw") return BASE_REPO_URL+"/tags/repeat.js"
 
 	const xml = (text) => "```xml\n" + text + "```";
 	const helpText = (name, end = "") =>
