@@ -11,12 +11,6 @@ const defaultConfig = {
 	},
 };
 
-const run = (args) =>
-	repeatJob({
-		...defaultConfig,
-		assyst: { ...defaultConfig.assyst, args },
-	});
-
 const repeatJob = (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute"
@@ -32,9 +26,9 @@ const repeatJob = (config) => {
 
 	const args = {
 		inline_links: false,  // boolean
-		word: args,      // string
+		word: config?.assyst?.args,      // string
 	}
-	if (args.length < 1) return helpText("No sentence provided");
+	if (config?.assyst?.args?.length < 1) return helpText("No sentence provided");
 	const { word, inline_links } = args;
 
 	const query = encodeURIComponent(args.word);
