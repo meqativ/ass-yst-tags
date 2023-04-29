@@ -11,7 +11,7 @@ const defaultConfig = {
 	},
 };
 
-const repeatJob = (config) => {
+const urbanJob = (config) => {
 	const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 		YOU = "cute"
 	if (config?.assyst?.args === "raw") return BASE_REPO_URL+"/urban.js"
