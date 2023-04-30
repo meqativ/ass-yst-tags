@@ -46,7 +46,7 @@ const urbanJob = async (config) => {
 		output += `${quote(smartRemoveSquareBrackets(definition))}\n\n` + `Source: <${permalink}>`;
 	} else {
 		output +=
-			`\n# [`  source  `](${permalink} "Place where the definition was found")\n` +
+			`\n# [\`  source  \`](${permalink} "Place where the definition was found")\n` +
 			`${quote(replaceHighlighted(definition))}`;
 	}
 	return output;
