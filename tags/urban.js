@@ -23,10 +23,11 @@ const urbanJob = async (config) => {
 
 	const args = {
 		inline_links: config?.inline_links, // boolean
+		OnlyDefs: (config?.assyst?.args?.startsWith?.("--only-defs")) ? (config?.assyst?.args = config?.assyst?.args?.slice(11,config?.assyst?.args?.length, true) : false // ?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
 		word: config?.assyst?.args, // string
 	};
 	if (config?.assyst?.args?.length < 1) return helpText("No sentence provided");
-	const { word, inline_links } = args;
+	const { word, inline_links, OnlyDefs } = args;
 
 	const query = encodeURIComponent(args.word);
 	const url = `https://api.urbandictionary.com/v0/define?term=${query}`;
@@ -35,13 +36,14 @@ const urbanJob = async (config) => {
 		data = await response.json(),
 		defObj = data.list?.[0];
 	const definition = defObj?.definition;
+	if (OnlyDefs) return definition;
 	if (!definition) {
 		return helpText(`No definition found for "${word.replaceAll("`", "`󠄴")}"${(typeof status !== "undefined" && status !== 200) ? `(${status})` : "" }`);
 	}
 
 	const permalink = defObj.permalink;
 	let output = xml(`< Definition for "${defObj.word}" >`);
-
+	
 	if (!inline_links) {
 		output += `Source: <${permalink}>\n` + `${quote(smartRemoveSquareBrackets(definition))}\n\n`;
 	} else {
