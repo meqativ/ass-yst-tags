@@ -43,7 +43,7 @@ const urbanJob = async (config) => {
 	let output = xml(`< Definition for "${defObj.word}" >`);
 
 	if (!inline_links) {
-		output += `${quote(smartRemoveSquareBrackets(definition))}\n\n` + `Source: <${permalink}>`;
+		output += `Source: <${permalink}>\n` + `${quote(smartRemoveSquareBrackets(definition))}\n\n`;
 	} else {
 		output +=
 			`\n# [\`  source  \`](${permalink} "Place where the definition was found")\n` +
