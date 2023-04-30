@@ -23,7 +23,7 @@ const urbanJob = async (config) => {
 
 	const args = {
 		inline_links: config?.inline_links, // boolean
-		OnlyDefs: (config?.assyst?.args?.startsWith?.("--only-defs")) ? (config.assyst.args = config?.assyst?.args?.slice(11,config?.assyst?.args?.length), true) : false // ?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
+		OnlyDefs: (config?.assyst?.args?.startsWith?.("--only-defs")) ? (config.assyst.args = config?.assyst?.args?.slice(11,config?.assyst?.args?.length), true) : false, // ?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿
 		word: config?.assyst?.args, // string
 	};
 	if (config?.assyst?.args?.length < 1) return helpText("No sentence provided");
