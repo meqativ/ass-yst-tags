@@ -40,7 +40,7 @@ const urbanJob = async (config) => {
 	}
 
 	const permalink = defObj.permalink;
-	let output = xml(`Definition for "${defObj.word}"`);
+	let output = xml(`< Definition for "${defObj.word}" >`);
 
 	if (!inline_links) {
 		output += `${quote(smartRemoveSquareBrackets(definition))}\n\n` + `Source: <${permalink}>`;
