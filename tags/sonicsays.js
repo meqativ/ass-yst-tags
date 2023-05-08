@@ -67,7 +67,6 @@ const sonicSaysJob = async (cfg) => {
 			0xffffffee,
 			layout
 		);
-		throw new Error("test my balls");
 		sonic.composite(textOverlay, 52, 119, 0);
 		return sonic.encode(cfg?.encodeLevel);
 	} catch (error) {
