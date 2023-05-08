@@ -26,7 +26,7 @@ const sonicSaysJob = async (cfg) => {
 	if (typeof cfg?.fontSize !== "number" && typeof cfg?.fontSize !== "undefined")
 		throw new Error(`Font size should be a number`);
 	if (cfg?.assyst?.args.length === 0) {
-		ctx.usesSONICSAYS = {};
+		ctx.usesSONICSAYS ??= {};
 		if (!ctx.usesSONICSAYS[message.author.id])
 			ctx.usesSONICSAYS[message.author.id] = 0;
 		ctx.usesSONICSAYS[message.author.id] += 1;
