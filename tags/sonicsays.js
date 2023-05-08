@@ -12,7 +12,7 @@ const defaultConfig = {
 const emojis = {
 	bad_image: "<:bad_image:1105128972364283954>",
 	help: "<:questionmark:1099298038125695068>",
-	help2: "<a:dumbass_think_already:1105146507948212325>",
+	help2: "<a:dumbass_think_already:1099938781504745483>",
 };
 
 const sonicSaysJob = async (cfg) => {
@@ -31,7 +31,7 @@ const sonicSaysJob = async (cfg) => {
 			ctx.usesSONICSAYS[message.author.id] = 0;
 		ctx.usesSONICSAYS[message.author.id] += 0;
 		return `${
-			ctx.usesSONICSAYS < 5 ? emojis.help : emojis.help2
+			ctx.usesSONICSAYS[message.author.id] < 5 ? emojis.help : emojis.help2
 		}\`-t sonicsays [text...]\``;
 		if (message?.referenced_message && message.referenced_message.content)
 			cfg.text = message.referenced_message.content;
