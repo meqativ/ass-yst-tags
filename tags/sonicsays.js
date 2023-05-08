@@ -70,6 +70,6 @@ const sonicSaysJob = async (cfg) => {
 		sonic.composite(textOverlay, 52, 119, 0);
 		return sonic.encode(cfg?.encodeLevel);
 	} catch (error) {
-		return `${emojis.bad_image} Failed to generate image\`\`\`js\n${error.stack}\`\`\``;
+		return `${emojis.bad_image} Failed to generate image${(error.message.includes("RangeError: Image has to be at least 1 pixel wide")) ? ". (This tag doesn't support emojis and some other special characters)" : ""}\`\`\`js\n${error.stack}\`\`\``;
 	}
 };
