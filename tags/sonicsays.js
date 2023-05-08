@@ -29,7 +29,7 @@ const sonicSaysJob = async (cfg) => {
 		ctx.usesSONICSAYS = {};
 		if (!ctx.usesSONICSAYS[message.author.id])
 			ctx.usesSONICSAYS[message.author.id] = 0;
-		ctx.usesSONICSAYS[message.author.id] += 0;
+		ctx.usesSONICSAYS[message.author.id] += 1;
 		return `${
 			ctx.usesSONICSAYS[message.author.id] < 5 ? emojis.help : emojis.help2
 		}\`-t sonicsays [text...]\``;
