@@ -22,6 +22,19 @@ const sonicSaysJob = async (cfg) => {
 			`Version ${cfg.version} isn't available, use one of these: 0`
 		);
 	const mussoliniImag = await fetch("https://upload.wikimedia.org/wikipedia/commons/e/ea/Palazzo_Brascjo_Fascist_Poster%2C_1934.png").then(res => res.arrayBuffer()).then(ImageScript.decode)
-	const lastImag = await fetch(cfg?.assyst?.lastattachment).then(res => res.arrayBuffer()).then(ImageScript.decode)
+	const lastImag = await fetch(cfg?.assyst?.lastattachment)
+		.then(res => res.arrayBuffer())
+		.then(ImageScript.decode)
+		.catch(e => {
+		if (e.message === "Unsupported image type")
+			return {
+				hai: "69",
+				text: "This tag only accepts images as input"
+			}
+		})
+
+	if (lastImag?.hai === "69")
+		return lastImag.text;
+
 	return lastImag.encode()
 };
