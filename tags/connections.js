@@ -26,7 +26,8 @@ const emojis = {
 
 const connectionsJob = async (cfg) => {
 	if (cfg === undefined) cfg = {};
-	let args = args ?? undefined;
+	const _args = args;
+	let args = _args ?? undefined;
 	if (typeof cfg?.assyst?.args === "string") args = cfg.assyst.args.split(" ");
 	if (typeof args !== "string") throw new Error("No args");
 	if (config?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/connections.js";
