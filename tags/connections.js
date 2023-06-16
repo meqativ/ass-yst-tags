@@ -15,7 +15,7 @@ const BASE_REPO_URL = "https://github.com/Meqativ/ass-yst-tags/blob/main",
 const defaultConfig = {
 	version: 0, // number, 0
 	assyst: {
-		args: undefined, // undefined (uses the constant) | string // {replace:"|\"|{args}}
+		args, // array (uses the constant) | string // {replace:"|\"|{args}}
 	},
 };
 const emojis = {
@@ -23,15 +23,13 @@ const emojis = {
 	help: "<:questionmark:1099298038125695068>",
 	help2: "<a:dumbass_think_already:1099938781504745483>",
 };
-
+const _args = [...args];
 const connectionsJob = async (cfg) => {
 	if (cfg === undefined) cfg = {};
-	const _args = args;
-	let args = _args ?? undefined;
-	if (typeof cfg?.assyst?.args === "string") args = cfg.assyst.args.split(" ");
-	if (typeof args !== "string") throw new Error("No args");
-	if (config?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/connections.js";
+	const args = _args.length !== 0 ? _args : cfg?.assyst?.args.?split?.(" ");
+	if (args.length === undefined) throw new Error("No args")
 	args[0] = args[0].toLowerCase();
+	if (args[0] === "raw") return BASE_REPO_URL + "/tags/connections.js";
 
 	if (args[0] === "services") return getAvailableConnections().then((arr) => `The available services are:\n1. \`${arr.join("\n1.")}\`.`);
 
