@@ -21,7 +21,7 @@ const sonicSaysJob = async (cfg) => {
 	if (!cfg) cfg = {};
 	if (!cfg?.text) cfg.text = cfg?.assyst.args;
 	if (cfg?.version !== 0) throw new Error(`Version ${cfg.version} isn't available, use one of these: 0`);
-	if (config?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/sonicsays.js";
+	if (cfg?.assyst?.args === "raw") return BASE_REPO_URL + "/tags/sonicsays.js";
 	if (typeof cfg?.fontSize !== "number" && typeof cfg?.fontSize !== "undefined") throw new Error(`Font size should be a number`);
 	if (cfg?.assyst?.args.length === 0) {
 		ctx.usesSONICSAYS ??= {};
