@@ -31,7 +31,7 @@ const connectionsJob = async (cfg) => {
 	args[0] = args[0] === undefined ? "" : args[0].toLowerCase();
 	if (args[0] === "raw") return BASE_REPO_URL + "/tags/connections.js";
 
-	if (args[0] === "services") return getAvailableConnections().then((arr) => `The available services are:\n1. \`${arr.join("\n1.")}\`.`);
+	if (args[0] === "services") return getAvailableConnections().then((arr) => `The available services are:\n1. ${arr.join("\n1. ")}.`);
 
 	if (args[0] === "snippet") {
 		const connections = await getAvailableConnections();
