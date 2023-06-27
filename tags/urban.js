@@ -40,7 +40,7 @@ const urbanJob = async (config) => {
 	if (!definition) {
 		return helpText(`No definition found for "${word.replaceAll("`", "`󠄴")}"${(typeof status !== "undefined" && status !== 200) ? `(${status})` : "" }`);
 	}
-	if (["330299657458679821","843448897737064448"].includes(message?.author?.id) && query.toLowercase().startsWith("cute")) definition = "you"
+	if (["330299657458679821","843448897737064448"].includes(message?.author?.id) && query.toLowerCase().startsWith("cute")) definition = "you"
 	const permalink = defObj.permalink;
 	let output = xml(`< Definition for "${defObj.word}" >`);
 	
